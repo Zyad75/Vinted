@@ -1,0 +1,44 @@
+.divOffeR {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+body {
+  background-color: #eaedee;
+}
+main {
+  margin-top: 60px;
+}
+.imgOffeR {
+  height: 600px;
+  width: 600px;
+  object-fit: cover;
+}
+
+.offerDesc {
+  background-color: white;
+  height: 600px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-left: 30px;
+  padding-top: 30px;
+}
+.detailS {
+  display: flex;
+  justify-content: flex-start;
+  gap: 40px;
+}
+.detailS p {
+  margin-bottom: 5px;
+  font-size: 13px;
+  color: #666666;
+}
+.categoryName {
+  color: #999999;
+}
+.price {
+  color: black;
+  font-size: 24px;
+}

@@ -2,14 +2,28 @@
   width: 100%;
   height: 300px;
 }
+body {
+  background-color: white;
+}
+.allOffers {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 100px;
+  margin-right: 50px;
+
+  gap: 60px;
+  flex-wrap: wrap;
+}
 .imgOffer {
-  height: 300px;
-  width: 200px;
+  height: 360px;
+  width: 234px;
   object-fit: cover;
+  margin-bottom: 10px;
 }
 .anOffer {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 .avatarOffer {
   height: 25px;
@@ -19,5 +33,23 @@
 .avatarAndUser {
   display: flex;
   justify-content: flex-start;
-  gap: 5px;
+  align-items: center;
+  margin-left: 8px;
+  gap: 10px;
+}
+.user {
+  color: gray;
+  text-decoration: none;
+}
+.infosOffer {
+  margin-bottom: 6px;
+  color: grey;
+  text-decoration: none;
+  font-size: 12px;
+}
+.priceOffer {
+  margin-bottom: 6px;
+  color: Black;
+  text-decoration: none;
+  font-size: 15px;
 }

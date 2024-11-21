@@ -33,30 +33,53 @@ const Home = () => {
       {isLoading ? (
         <p>En cours de chargement</p>
       ) : (
-        data.offers.map((elem, index) => {
-          return (
-            <>
-              <Link to="/Offer">
-                <div className="anOffer">
-                  <div className="avatarAndUser">
-                    <p>{elem.owner.account.username}</p>
+        <div className="allOffers">
+          {data.offers.map((elem, index) => {
+            console.log(elem.owner.account.avatar);
+            return (
+              <>
+                <Link to={`/Offer/${elem._id}`}>
+                  <div className="anOffer">
+                    <div className="avatarAndUser">
+                      {elem.owner.account.avatar && (
+                        <img
+                          src={elem.owner.account.avatar.secure_url}
+                          alt=""
+                          className="avatarOffer"
+                        />
+                      )}
+                      <p className="user">{elem.owner.account.username}</p>
+                    </div>
                     <img
-                      src={elem.owner.account.avatar.secure_url}
-                      alt=""
-                      className="avatarOffer"
+                      key={index}
+                      src={elem.product_image.secure_url}
+                      alt="img article"
+                      className="imgOffer"
                     />
+                    <div>
+                      <p className="priceOffer">{elem.product_price} €</p>
+
+                      {elem.product_details.map((detail) => {
+                        return (
+                          <>
+                            {detail.TAILLE ? (
+                              <>
+                                <p className="infosOffer">{detail.TAILLE}</p>
+                                <p className="infosOffer">{detail.MARQUE}</p>
+                              </>
+                            ) : (
+                              <p className="infosOffer">{detail.MARQUE}</p>
+                            )}
+                          </>
+                        );
+                      })}
+                    </div>
                   </div>
-                  <img
-                    key={index}
-                    src={elem.product_image.secure_url}
-                    alt="img article"
-                    className="imgOffer"
-                  />
-                </div>
-              </Link>
-            </>
-          );
-        })
+                </Link>
+              </>
+            );
+          })}
+        </div>
       )}
     </main>
   );
