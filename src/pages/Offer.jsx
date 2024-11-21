@@ -1,6 +1,8 @@
 const Offer = () => {
-  <div>
-    <p>PAGE OFFER</p>
-  </div>;
+  return (
+    <div>
+      <p>PAGE OFFER</p>
+    </div>
+  );
 };
 export default Offer;

@@ -1,0 +1,39 @@
+header {
+  margin-bottom: 30px;
+}
+
+.headerContains {
+  display: flex;
+  justify-content: space-evenly;
+  height: 30px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.headerContains div button {
+  height: 30px;
+}
+.searchBar {
+  width: 300px;
+  height: 30px;
+}
+.priceSelect {
+  display: flex;
+  gap: 20px;
+}
+.logoSearchBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.searchAndPrice {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.buttonsSignLog {
+  display: flex;
+  gap: 10px;
+}
