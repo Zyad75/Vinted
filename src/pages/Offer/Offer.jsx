@@ -7,19 +7,22 @@ const Offer = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  try {
+    useEffect(() => {
+      const fetchData = async () => {
+        const response = await axios.get(
+          `https://lereacteur-vinted-api.herokuapp.com/v2/offers/${id}`
+        );
+        console.log(response.data);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get(
-        `https://lereacteur-vinted-api.herokuapp.com/v2/offers/${id}`
-      );
-      console.log(response.data);
-
-      setIsLoading(false);
-      setData(response.data);
-    };
-    fetchData();
-  }, [id]);
+        setIsLoading(false);
+        setData(response.data);
+      };
+      fetchData();
+    }, [id]);
+  } catch (error) {
+    console.log(error.response.data);
+  }
 
   return (
     <>

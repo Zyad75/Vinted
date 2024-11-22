@@ -6,19 +6,22 @@ import axios from "axios";
 const Home = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  try {
+    useEffect(() => {
+      const fetchData = async () => {
+        const response = await axios.get(
+          "https://lereacteur-vinted-api.herokuapp.com/v2/offers"
+        );
+        console.log(response.data);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get(
-        "https://lereacteur-vinted-api.herokuapp.com/v2/offers"
-      );
-      console.log(response.data);
-
-      setIsLoading(false);
-      setData(response.data);
-    };
-    fetchData();
-  }, []);
+        setIsLoading(false);
+        setData(response.data);
+      };
+      fetchData();
+    }, []);
+  } catch (error) {
+    console.log(error);
+  }
 
   return (
     <main>
@@ -38,7 +41,7 @@ const Home = () => {
             console.log(elem.owner.account.avatar);
             return (
               <>
-                <Link to={`/Offer/${elem._id}`}>
+                <Link className="link" to={`/Offer/${elem._id}`}>
                   <div className="anOffer">
                     <div className="avatarAndUser">
                       {elem.owner.account.avatar && (
