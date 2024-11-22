@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <header>
@@ -17,7 +19,9 @@ const Header = () => {
           </div>
         </div>
         <div className="buttonsSignLog">
-          <button>S'inscrire</button>
+          <Link to={"/Signup"}>
+            <button>S'inscrire</button>
+          </Link>
           <button>Se connecter</button>
         </div>
         <button>Vends tes articles</button>
