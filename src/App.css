@@ -40,3 +40,10 @@ body {
   display: flex;
   gap: 10px;
 }
+.newsletter {
+  display: flex;
+  align-items: center;
+}
+.logoSearchBar img {
+  height: 100px;
+}

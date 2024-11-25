@@ -1,11 +1,22 @@
 import { Link } from "react-router-dom";
-
+import logo from "../assets/vinted9809.jpg";
 const Header = () => {
   return (
     <header>
       <div className="headerContains">
-        <div className="logoSearchBar">
-          <img src="" alt="Vinted" />
+        <div
+          className="logoSearchBar"
+          onClick={() => {
+            return (
+              <>
+                <Link to={"/"}>
+                  <button></button>
+                </Link>
+              </>
+            );
+          }}
+        >
+          <img src={logo} alt="Vinted" />
           <div className="searchAndPrice">
             <input
               type="text"
