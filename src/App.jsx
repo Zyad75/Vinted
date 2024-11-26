@@ -10,6 +10,9 @@ import Cookies from "js-cookie";
 function App() {
   const [token, setToken] = useState(Cookies.get("user-token") || null);
 
+  const [titleFilter, setTitleFilter] = useState(""); // ce state me permet de stocker la valeur de ce que j'ecris dans la barre de recherche à chaque caractère que
+  //j'ecris et je le declare ici dans app afin de pouvoir l'utiliser dans le header pour lui attribuer une valeur
+  //et de pouvoir le transmettre dans la home page afin d'utiliser le contenu du state pour filtrer l'affichage des offres selon le titre
   const handleConnectedOrNot = (token) => {
     if (token === null) {
       Cookies.remove("user-token");
@@ -18,12 +21,17 @@ function App() {
     }
     setToken(token);
   };
-
+  console.log(titleFilter);
   return (
     <Router>
-      <Header token={token} handleConnectedOrNot={handleConnectedOrNot} />
+      <Header
+        setTitleFilter={setTitleFilter}
+        titleFilter={titleFilter}
+        token={token}
+        handleConnectedOrNot={handleConnectedOrNot}
+      />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home titleFilter={titleFilter} />} />
         <Route path="/Offer/:id" element={<Offer />} />
         <Route
           path="/signup"

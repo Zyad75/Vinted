@@ -2,7 +2,12 @@ import { Link } from "react-router-dom";
 import logo from "../assets/vinted9809.jpg";
 import { useNavigate } from "react-router-dom";
 
-const Header = ({ token, handleConnectedOrNot }) => {
+const Header = ({
+  token,
+  handleConnectedOrNot,
+  titleFilter,
+  setTitleFilter,
+}) => {
   const navigate = useNavigate();
   return (
     <header>
@@ -10,10 +15,17 @@ const Header = ({ token, handleConnectedOrNot }) => {
         <div className="logoSearchBar">
           <img src={logo} alt="Vinted" />
           <div className="searchAndPrice">
+            {/* ici je souhaite filtrer les offres 
+            dabord en fonction de ce que j'ecris dans la barre de recherche (titre d'offre)
+            pour cela je vais devoir faire une requete au serveur avec un get pour obtenir la data contenant les offres filtrés par titre donc ma requete contiendra un query */}
             <input
               type="text"
+              value={titleFilter}
               placeholder="Recherche des articles"
               className="searchBar"
+              onChange={(event) => {
+                setTitleFilter(event.target.value);
+              }}
             />
             <div className="priceSelect">
               <p>Trier par prix :</p>

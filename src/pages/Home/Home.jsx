@@ -3,22 +3,32 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 //On va vouloir chercher de la data donc on va utiliser axios pour faire une requete au backend de vinted pour obtenir la data de toutes les offres
 import axios from "axios";
-const Home = () => {
+const Home = ({ titleFilter }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   try {
     useEffect(() => {
       const fetchData = async () => {
-        const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/v2/offers"
-        );
-        // console.log(response.data);
+        if (!titleFilter) {
+          const response = await axios.get(
+            "https://lereacteur-vinted-api.herokuapp.com/v2/offers"
+          );
+          // console.log(response.data);
 
-        setIsLoading(false);
-        setData(response.data);
+          setIsLoading(false);
+          setData(response.data);
+        } else {
+          const response = await axios.get(
+            `https://lereacteur-vinted-api.herokuapp.com/v2/offers?title=${titleFilter}`
+          );
+          console.log(response.data);
+
+          setIsLoading(false);
+          setData(response.data);
+        }
       };
       fetchData();
-    }, []);
+    }, [titleFilter]);
   } catch (error) {
     console.log(error);
   }
