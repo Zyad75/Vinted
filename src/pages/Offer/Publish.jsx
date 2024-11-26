@@ -244,6 +244,7 @@ const Publish = ({ token }) => {
             />
           </div>
           <input
+            className="submitButton"
             style={{ width: "fit-content" }}
             type="submit"
             value={"Ajouter"}

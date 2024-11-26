@@ -40,7 +40,7 @@ const Signup = ({ handleConnectedOrNot }) => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: "20px",
+
           marginTop: "200px",
         }}
       >
@@ -49,10 +49,15 @@ const Signup = ({ handleConnectedOrNot }) => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            gap: "20px",
+            marginBottom: "20px",
           }}
           onSubmit={handleSignup}
         >
+          {" "}
+          <h1>S'inscrire</h1>
           <input
+            className="inputSignupLogin"
             type="text"
             placeholder="username"
             value={username}
@@ -61,6 +66,7 @@ const Signup = ({ handleConnectedOrNot }) => {
             }}
           />
           <input
+            className="inputSignupLogin"
             type="email"
             placeholder="mail@mail.com"
             value={email}
@@ -69,6 +75,7 @@ const Signup = ({ handleConnectedOrNot }) => {
             }}
           />
           <input
+            className="inputSignupLogin"
             type="password"
             placeholder="password"
             value={password}
@@ -86,10 +93,16 @@ const Signup = ({ handleConnectedOrNot }) => {
             />
             <p>Newsletter</p>
           </div>
-          <input type="submit" value={"S'inscrire"} />
+          <input className="submitButton" type="submit" value={"S'inscrire"} />
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         </form>
-        <Link to={"/login"}> Déjà inscris ? Connecte-toi!</Link>
+        <Link
+          style={{ textDecoration: "none", color: "#2DB0BA" }}
+          to={"/login"}
+        >
+          {" "}
+          Déjà inscris ? Connecte-toi!
+        </Link>
       </div>
     </>
   );

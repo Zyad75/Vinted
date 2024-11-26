@@ -40,6 +40,7 @@ const Header = ({
               <p>
                 Trier par prix :
                 <button
+                  className="priceButton"
                   onClick={() => {
                     setPriceDescAsc("price-asc");
                   }}
@@ -47,6 +48,7 @@ const Header = ({
                   croissant
                 </button>
                 <button
+                  className="priceButton"
                   onClick={() => {
                     setPriceDescAsc("price-desc");
                   }}
@@ -60,7 +62,7 @@ const Header = ({
                 <input
                   type="number"
                   value={priceMin}
-                  style={{ width: "60px" }}
+                  className="priceAscDescInp"
                   onChange={(event) => {
                     setPriceMin(event.target.value);
                   }}
@@ -69,7 +71,7 @@ const Header = ({
                 <input
                   type="number"
                   value={priceMax}
-                  style={{ width: "60px" }}
+                  className="priceAscDescInp"
                   onChange={(event) => {
                     setPriceMax(event.target.value);
                   }}
@@ -81,16 +83,17 @@ const Header = ({
         {!token ? (
           <div className="buttonsSignLog">
             <Link to={"/signup"}>
-              <button>S'inscrire</button>
+              <button className="connectButtons">S'inscrire</button>
             </Link>
             <Link to={"/login"}>
-              <button>Se connecter</button>
+              <button className="connectButtons">Se connecter</button>
             </Link>
           </div>
         ) : (
           <>
             <div className="buttonsSignLog">
               <button
+                className="logoutButton"
                 onClick={() => {
                   handleConnectedOrNot(null);
                   //permet de faire :
@@ -106,7 +109,7 @@ const Header = ({
           </>
         )}
         <Link to={"/publish"}>
-          <button>Vends tes articles</button>
+          <button className="publishButton">Vends tes articles</button>
         </Link>
       </div>
     </header>

@@ -1,8 +1,10 @@
 header {
+  margin-top: 10px;
   margin-bottom: 30px;
   background-color: white;
 }
 body {
+  font-family: Arial;
   background-color: white;
 }
 .headerContains {
@@ -17,12 +19,34 @@ body {
   height: 30px;
 }
 .searchBar {
-  width: 300px;
+  width: 5;
   height: 30px;
+  background-color: #f5f6f7;
+  border-radius: 4px;
+  color: gray;
+  border: none;
 }
 .priceSelect {
   display: flex;
-  gap: 20px;
+  flex-direction: row;
+  align-items: center;
+}
+.priceButton {
+  border: none;
+  color: white;
+  background-color: #c2175b;
+  margin: 5px;
+  border-radius: 4px;
+}
+.priceAscDescInp {
+  width: 60px;
+  margin: 5px;
+  border-radius: 4px;
+  padding: 5px;
+  background-color: #2db0ba;
+  border: none;
+  text-align: center;
+  color: white;
 }
 .logoSearchBar {
   display: flex;
@@ -39,6 +63,48 @@ body {
 .buttonsSignLog {
   display: flex;
   gap: 10px;
+}
+.inputSignupLogin {
+  width: 200px;
+  padding: 10px;
+  border: none;
+  border-bottom: red 0.5px solid;
+}
+h1 {
+  font-size: 20px;
+}
+.submitButton {
+  background-color: #2db0ba;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  width: 250px;
+}
+.logoutButton {
+  background-color: #c2175b;
+  border: none;
+  padding: 5px;
+  color: white;
+  border-radius: 4px;
+}
+.publishButton {
+  background-color: #2db0ba;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+}
+.connectButtons {
+  background-color: white;
+  color: #2db0ba;
+  border-radius: 4px;
+  padding: 5px;
+  border: #2db0ba solid 1px;
+}
+button:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 .newsletter {
   display: flex;
