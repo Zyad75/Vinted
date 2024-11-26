@@ -19,7 +19,10 @@ const Header = ({
     <header>
       <div className="headerContains">
         <div className="logoSearchBar">
-          <img src={logo} alt="Vinted" />
+          <Link to={"/"}>
+            <img src={logo} alt="Vinted" />
+          </Link>
+
           <div className="searchAndPrice">
             {/* ici je souhaite filtrer les offres 
             dabord en fonction de ce que j'ecris dans la barre de recherche (titre d'offre)
@@ -102,8 +105,9 @@ const Header = ({
             </div>
           </>
         )}
-
-        <button>Vends tes articles</button>
+        <Link to={"/publish"}>
+          <button>Vends tes articles</button>
+        </Link>
       </div>
     </header>
   );

@@ -37,13 +37,13 @@ const Login = ({ handleConnectedOrNot }) => {
 
   return (
     <>
-      <div>Login page</div>
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           gap: "20px",
+          marginTop: "200px",
         }}
       >
         <form

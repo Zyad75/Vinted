@@ -41,6 +41,7 @@ const Signup = ({ handleConnectedOrNot }) => {
           flexDirection: "column",
           alignItems: "center",
           gap: "20px",
+          marginTop: "200px",
         }}
       >
         <form

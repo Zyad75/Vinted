@@ -7,6 +7,7 @@ import "./App.css";
 import Header from "./components/Header";
 import { useState } from "react";
 import Cookies from "js-cookie";
+import Publish from "./pages/Offer/Publish";
 function App() {
   const [token, setToken] = useState(Cookies.get("user-token") || null);
 
@@ -61,6 +62,9 @@ function App() {
           path="/login"
           element={<Login handleConnectedOrNot={handleConnectedOrNot} />}
         ></Route>
+        <Route path="/publish" element={<Publish token={token} />}>
+          {" "}
+        </Route>
       </Routes>
     </Router>
   );
