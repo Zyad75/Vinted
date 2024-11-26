@@ -12,7 +12,7 @@ const Home = () => {
         const response = await axios.get(
           "https://lereacteur-vinted-api.herokuapp.com/v2/offers"
         );
-        console.log(response.data);
+        // console.log(response.data);
 
         setIsLoading(false);
         setData(response.data);
@@ -38,7 +38,7 @@ const Home = () => {
       ) : (
         <div className="allOffers">
           {data.offers.map((elem, index) => {
-            console.log(elem.owner.account.avatar);
+            // console.log(elem.owner.account.avatar);
             return (
               <>
                 <Link className="link" to={`/Offer/${elem._id}`}>

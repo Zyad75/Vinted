@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/vinted9809.jpg";
-import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
-const Header = () => {
-  const token = Cookies.get("user-token");
-  console.log(token);
-
+const Header = ({ token, handleConnectedOrNot }) => {
+  const navigate = useNavigate();
   return (
     <header>
       <div className="headerContains">
@@ -25,10 +23,10 @@ const Header = () => {
         </div>
         {!token ? (
           <div className="buttonsSignLog">
-            <Link to={"/Signup"}>
+            <Link to={"/signup"}>
               <button>S'inscrire</button>
             </Link>
-            <Link to={"/Login"}>
+            <Link to={"/login"}>
               <button>Se connecter</button>
             </Link>
           </div>
@@ -37,8 +35,11 @@ const Header = () => {
             <div className="buttonsSignLog">
               <button
                 onClick={() => {
-                  Cookies.remove("user-token");
-                  return <Link to={"/"} />;
+                  handleConnectedOrNot(null);
+                  //permet de faire :
+                  // Cookies.remove("user-token");
+                  //setToken(null);
+                  navigate("/");
                 }}
               >
                 {" "}

@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
-import Cookies from "js-cookie";
+
 import { useNavigate } from "react-router-dom";
-const Signup = () => {
+import { Link } from "react-router-dom";
+const Signup = ({ handleConnectedOrNot }) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -16,59 +17,69 @@ const Signup = () => {
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
         { username, email, password, newsletter }
       );
-      const token = response.data.token;
-      Cookies.set("user-token", token, { expires: 60 });
-      console.log(response.data);
+      handleConnectedOrNot(response.data.token);
+      console.log("ici =>", response.data);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
   return (
     <>
-      <form
+      <div
         style={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          gap: "20px",
         }}
-        onSubmit={(handleSignup, navigate("/"))}
       >
-        <input
-          type="text"
-          placeholder="username"
-          value={username}
-          onChange={(event) => {
-            setUsername(event.target.value);
+        <form
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
-        />
-        <input
-          type="email"
-          placeholder="mail@mail.com"
-          value={email}
-          onChange={(event) => {
-            setEmail(event.target.value);
-          }}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          value={password}
-          onChange={(event) => {
-            setPassword(event.target.value);
-          }}
-        />
-        <div className="newsletter">
+          onSubmit={handleSignup}
+        >
           <input
-            type="checkbox"
-            checked={newsletter}
-            onChange={() => {
-              setNewsletter(!newsletter);
+            type="text"
+            placeholder="username"
+            value={username}
+            onChange={(event) => {
+              setUsername(event.target.value);
             }}
           />
-          <p>Newsletter</p>
-        </div>
-        <input type="submit" value={"S'inscrire"} />
-      </form>
+          <input
+            type="email"
+            placeholder="mail@mail.com"
+            value={email}
+            onChange={(event) => {
+              setEmail(event.target.value);
+            }}
+          />
+          <input
+            type="password"
+            placeholder="password"
+            value={password}
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
+          />
+          <div className="newsletter">
+            <input
+              type="checkbox"
+              checked={newsletter}
+              onChange={() => {
+                setNewsletter(!newsletter);
+              }}
+            />
+            <p>Newsletter</p>
+          </div>
+          <input type="submit" value={"S'inscrire"} />
+        </form>
+        <Link to={"/login"}> Déjà inscris ? Connecte-toi!</Link>
+      </div>
     </>
   );
 };
