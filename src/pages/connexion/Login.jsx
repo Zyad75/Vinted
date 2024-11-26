@@ -7,8 +7,10 @@ const Login = ({ handleConnectedOrNot }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
   const handleLogin = async (event) => {
     event.preventDefault();
+    setErrorMessage(null);
     try {
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/login",
@@ -19,6 +21,17 @@ const Login = ({ handleConnectedOrNot }) => {
       navigate("/");
     } catch (error) {
       console.log(error);
+      if (error.response.data.message === "User not found") {
+        setErrorMessage("email non répertorié/");
+      } else if (error.response.status === 401) {
+        setErrorMessage(
+          "Vous n'êtes pas autorisé a vous connecter, veuillez verifier votre email/mot de passe"
+        );
+      } else {
+        setErrorMessage(
+          "une erreur est survenue veuillez réessayer ulterieurement"
+        );
+      }
     }
   };
 
@@ -60,6 +73,7 @@ const Login = ({ handleConnectedOrNot }) => {
           <input type="submit" />
         </form>
         <Link to={"/signup"}> Pas encore de compte ? Inscris-toi !</Link>
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </div>
     </>
   );

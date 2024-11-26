@@ -9,9 +9,11 @@ const Signup = ({ handleConnectedOrNot }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setNewsletter] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleSignup = async (event) => {
     event.preventDefault();
+    setErrorMessage(null);
     try {
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
@@ -22,6 +24,13 @@ const Signup = ({ handleConnectedOrNot }) => {
       navigate("/");
     } catch (error) {
       console.log(error);
+      if (error.response.status === 409) {
+        setErrorMessage("adresse déja utilisée");
+      } else if (error.response.data.message === "Missing parameters") {
+        setErrorMessage("Veuillez renseigner toutes vos informations");
+      } else {
+        setErrorMessage("Erreur, veuillez réessayer svp !");
+      }
     }
   };
   return (
@@ -77,6 +86,7 @@ const Signup = ({ handleConnectedOrNot }) => {
             <p>Newsletter</p>
           </div>
           <input type="submit" value={"S'inscrire"} />
+          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         </form>
         <Link to={"/login"}> Déjà inscris ? Connecte-toi!</Link>
       </div>

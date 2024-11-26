@@ -27,13 +27,11 @@ function App() {
         <Route path="/Offer/:id" element={<Offer />} />
         <Route
           path="/signup"
-          element={<Signup />}
-          handleConnectedOrNot={handleConnectedOrNot}
+          element={<Signup handleConnectedOrNot={handleConnectedOrNot} />}
         />
         <Route
           path="/login"
-          element={<Login />}
-          handleConnectedOrNot={handleConnectedOrNot}
+          element={<Login handleConnectedOrNot={handleConnectedOrNot} />}
         ></Route>
       </Routes>
     </Router>
