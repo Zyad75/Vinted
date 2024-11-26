@@ -1,21 +1,15 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/vinted9809.jpg";
+import Cookies from "js-cookie";
+
 const Header = () => {
+  const token = Cookies.get("user-token");
+  console.log(token);
+
   return (
     <header>
       <div className="headerContains">
-        <div
-          className="logoSearchBar"
-          onClick={() => {
-            return (
-              <>
-                <Link to={"/"}>
-                  <button></button>
-                </Link>
-              </>
-            );
-          }}
-        >
+        <div className="logoSearchBar">
           <img src={logo} alt="Vinted" />
           <div className="searchAndPrice">
             <input
@@ -29,12 +23,31 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="buttonsSignLog">
-          <Link to={"/Signup"}>
-            <button>S'inscrire</button>
-          </Link>
-          <button>Se connecter</button>
-        </div>
+        {!token ? (
+          <div className="buttonsSignLog">
+            <Link to={"/Signup"}>
+              <button>S'inscrire</button>
+            </Link>
+            <Link to={"/Login"}>
+              <button>Se connecter</button>
+            </Link>
+          </div>
+        ) : (
+          <>
+            <div className="buttonsSignLog">
+              <button
+                onClick={() => {
+                  Cookies.remove("user-token");
+                  return <Link to={"/"} />;
+                }}
+              >
+                {" "}
+                se Deconnecter{" "}
+              </button>
+            </div>
+          </>
+        )}
+
         <button>Vends tes articles</button>
       </div>
     </header>
