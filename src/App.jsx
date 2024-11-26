@@ -13,6 +13,10 @@ function App() {
   const [titleFilter, setTitleFilter] = useState(""); // ce state me permet de stocker la valeur de ce que j'ecris dans la barre de recherche à chaque caractère que
   //j'ecris et je le declare ici dans app afin de pouvoir l'utiliser dans le header pour lui attribuer une valeur
   //et de pouvoir le transmettre dans la home page afin d'utiliser le contenu du state pour filtrer l'affichage des offres selon le titre
+  const [priceMin, setPriceMin] = useState(Number);
+  const [priceMax, setPriceMax] = useState(10000);
+  const [priceDescAsc, setPriceDescAsc] = useState("price-asc");
+  //ici meme principe mais pour un filtre de prix minimum max etc
   const handleConnectedOrNot = (token) => {
     if (token === null) {
       Cookies.remove("user-token");
@@ -27,11 +31,27 @@ function App() {
       <Header
         setTitleFilter={setTitleFilter}
         titleFilter={titleFilter}
+        priceMin={priceMin}
+        setPriceMin={setPriceMin}
         token={token}
         handleConnectedOrNot={handleConnectedOrNot}
+        priceMax={priceMax}
+        setPriceMax={setPriceMax}
+        priceDescAsc={priceDescAsc}
+        setPriceDescAsc={setPriceDescAsc}
       />
       <Routes>
-        <Route path="/" element={<Home titleFilter={titleFilter} />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              titleFilter={titleFilter}
+              priceMin={priceMin}
+              priceMax={priceMax}
+              priceDescAsc={priceDescAsc}
+            />
+          }
+        />
         <Route path="/Offer/:id" element={<Offer />} />
         <Route
           path="/signup"

@@ -7,6 +7,12 @@ const Header = ({
   handleConnectedOrNot,
   titleFilter,
   setTitleFilter,
+  priceMin,
+  setPriceMin,
+  priceMax,
+  setPriceMax,
+
+  setPriceDescAsc,
 }) => {
   const navigate = useNavigate();
   return (
@@ -28,8 +34,44 @@ const Header = ({
               }}
             />
             <div className="priceSelect">
-              <p>Trier par prix :</p>
-              <p> Prix entre :</p>
+              <p>
+                Trier par prix :
+                <button
+                  onClick={() => {
+                    setPriceDescAsc("price-asc");
+                  }}
+                >
+                  croissant
+                </button>
+                <button
+                  onClick={() => {
+                    setPriceDescAsc("price-desc");
+                  }}
+                >
+                  décroissant
+                </button>
+              </p>
+              <p>
+                {" "}
+                Prix entre :
+                <input
+                  type="number"
+                  value={priceMin}
+                  style={{ width: "60px" }}
+                  onChange={(event) => {
+                    setPriceMin(event.target.value);
+                  }}
+                />{" "}
+                et{" "}
+                <input
+                  type="number"
+                  value={priceMax}
+                  style={{ width: "60px" }}
+                  onChange={(event) => {
+                    setPriceMax(event.target.value);
+                  }}
+                />
+              </p>
             </div>
           </div>
         </div>
